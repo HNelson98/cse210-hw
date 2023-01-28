@@ -6,6 +6,6 @@ class Program
     {
         Entry entry = new Entry();
 
-        Console.WriteLine(entry._title);
+        entry.produceEntry();
     }
 }
