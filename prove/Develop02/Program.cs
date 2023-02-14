@@ -60,16 +60,7 @@ class Program
             else 
             {
                 Console.WriteLine("Thats not an option, try again!");
-            }
-                
-                    
-
-                
-        
+            }      
         }
-
-        
-
-
     }
 }
