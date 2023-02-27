@@ -65,10 +65,11 @@ public class Reflecting : Activity
         string string_num = Console.ReadLine();
         Console.Clear();
         time = int.Parse(string_num);
+        GetReady();
+        
         DateTime start = DateTime.Now;
         DateTime end = start.AddSeconds(time);
-        GetReady();
-
+        
         Console.WriteLine("Consider the following prompt:");
         int prompt = SelectPrompt();
         Console.WriteLine(_prompts[prompt]);
@@ -80,8 +81,9 @@ public class Reflecting : Activity
         while (DateTime.Now < end)
         {
             AskQuestion();
-            Spinner();
         }
         Congradulations();
+        Spinner();
+
     }
 }

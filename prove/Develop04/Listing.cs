@@ -25,8 +25,8 @@ public class Listing : Activity
         string string_num = Console.ReadLine();
         Console.Clear();
         time = int.Parse(string_num);
-        DateTime start = DateTime.Now;
-        DateTime end = start.AddSeconds(time);
+
+        
         GetReady();
 
         Console.WriteLine("\nList as many responses as you can to the following prompt");
@@ -34,7 +34,8 @@ public class Listing : Activity
         Console.WriteLine(_prompts[prompt]);
         FiveSecTimer();
         Console.WriteLine("\n");
-
+        DateTime start = DateTime.Now;
+        DateTime end = start.AddSeconds(time);
         while (DateTime.Now < end)
         {
             Console.Write("> ");
