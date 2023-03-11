@@ -1,9 +1,21 @@
-public class Shape {
+public abstract class Shape {
     string _color;
+    int _width;
+    int _height;
+
     public Shape(string color) {
         _color = color;
     }
-
+    public Shape(string color, int sides) {
+        _color = color;
+        _height = sides;
+        _width = sides;
+    }
+    public Shape(string color, int width, int height) {
+        _color = color;
+        _width = width;
+        _height = height;
+    }
     public string GetColor() {
         return _color;
     }
@@ -12,8 +24,6 @@ public class Shape {
         _color = color;
     }
 
-    public virtual double GetArea() {
-        return 0;
-    }
+    public abstract double GetArea();
 
 }

@@ -1,0 +1,4 @@
+Henry
+Noob
+1500
+checklist;J;k;50;500;20;20;True
