@@ -74,29 +74,21 @@ public class User
 
     public void LevelUp()
     {
-        if (_experience >= 1000)
+        if (_experience >= 9000)
         {
-            _level = "Noob";
+            _level = "MASTER OF THE UNIVERSE";
+            Console.WriteLine("You have leveled up! your level is now " + _level + "!");
+            Console.WriteLine("You have reached the highest level possible!");
+            Console.ReadLine();
+        }
+        else if (_experience >= 8000)
+        {
+            _level = "Legendary";
             Console.WriteLine("You have leveled up! your level is now " + _level + "!");
         }
-        else if (_experience >= 2000)
+        else if (_experience >= 7000)
         {
-            _level = "Beginner";
-            Console.WriteLine("You have leveled up! your level is now " + _level + "!");
-        }
-        else if (_experience >= 3000)
-        {
-            _level = "Intermediate";
-            Console.WriteLine("You have leveled up! your level is now " + _level + "!");
-        }
-        else if (_experience >= 4000)
-        {
-            _level = "Advanced";
-            Console.WriteLine("You have leveled up! your level is now " + _level + "!");
-        }
-        else if (_experience >= 5000)
-        {
-            _level = "Expert";
+            _level = "Jedi Master";
             Console.WriteLine("You have leveled up! your level is now " + _level + "!");
         }
         else if (_experience >= 6000)
@@ -104,22 +96,30 @@ public class User
             _level = "Master";
             Console.WriteLine("You have leveled up! your level is now " + _level + "!");
         }
-        else if (_experience >= 7000)
+        else if (_experience >= 5000)
         {
-            _level = "Grand Master";
+            _level = "Expert";
             Console.WriteLine("You have leveled up! your level is now " + _level + "!");
         }
-        else if (_experience >= 8000)
+        else if (_experience >= 4000)
         {
-            _level = "Legendary";
+            _level = "Advanced";
             Console.WriteLine("You have leveled up! your level is now " + _level + "!");
         }
-        else if (_experience >= 9000)
+        else if (_experience >= 3000)
         {
-            _level = "MASTER OF THE UNIVERSE";
+            _level = "Intermediate";
             Console.WriteLine("You have leveled up! your level is now " + _level + "!");
-            Console.WriteLine("You have reached the highest level possible!");
-            Console.ReadLine();
+        }
+        else if (_experience >= 2000)
+        {
+            _level = "Beginner";
+            Console.WriteLine("You have leveled up! your level is now " + _level + "!");
+        }
+        else if (_experience >= 1000)
+        {
+            _level = "Noob";
+            Console.WriteLine("You have leveled up! your level is now " + _level + "!");
         }
     }
 
@@ -173,6 +173,9 @@ public class User
         string path = @"C:\Users\Henry\Documents\BYUI Winter Semester 2\CSE-210 Programming with Classes\cse210-hw\prove" + _name + ".txt";
         using (StreamReader sr = File.OpenText(path))
         {
+            _name = sr.ReadLine();
+            _level = sr.ReadLine();
+            _experience = Convert.ToInt32(sr.ReadLine());
             string s = "";
             while ((s = sr.ReadLine()) != null)
             {
