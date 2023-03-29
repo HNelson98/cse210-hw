@@ -44,8 +44,6 @@ public class User
         {
             Console.WriteLine("Invalid goal type.");
         }
-
-
     }
 
     public void showGoals()
@@ -143,8 +141,8 @@ public class User
 
     public void save()
     {
-        File.Create(@"C:\Users\Henry\Documents\BYUI Winter Semester 2\CSE-210 Programming with Classes\cse210-hw\prove" + _name + ".txt").Close();   
-        string path = @"C:\Users\Henry\Documents\BYUI Winter Semester 2\CSE-210 Programming with Classes\cse210-hw\prove" + _name + ".txt";
+        File.Create(@"C:\Users\Henry\Documents\BYUI Winter Semester 2\CSE-210 Programming with Classes\cse210-hw\prove\Develop05\" + _name + ".txt").Close();   
+        string path = @"C:\Users\Henry\Documents\BYUI Winter Semester 2\CSE-210 Programming with Classes\cse210-hw\prove\Develop05\" + _name + ".txt";
         using (StreamWriter sw = File.CreateText(path))
         {
             sw.WriteLine(_name);
@@ -170,7 +168,7 @@ public class User
 
     public void load()
     {
-        string path = @"C:\Users\Henry\Documents\BYUI Winter Semester 2\CSE-210 Programming with Classes\cse210-hw\prove" + _name + ".txt";
+        string path = @"C:\Users\Henry\Documents\BYUI Winter Semester 2\CSE-210 Programming with Classes\cse210-hw\prove\Develop05\" + _name + ".txt";
         using (StreamReader sr = File.OpenText(path))
         {
             _name = sr.ReadLine();

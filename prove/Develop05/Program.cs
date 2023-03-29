@@ -27,7 +27,7 @@ class Program
                     Console.WriteLine("What would you like to do? ");
                     Console.WriteLine("1. Add a goal");
                     Console.WriteLine("2. Show goals");
-                    Console.WriteLine("3. Show info");
+                    Console.WriteLine("3. Show User info");
                     Console.WriteLine("4. Record event");
                     Console.WriteLine("5. Save and Exit");
                     string input2 = Console.ReadLine();
