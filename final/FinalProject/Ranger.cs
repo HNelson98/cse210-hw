@@ -8,7 +8,7 @@ public class Ranger : Charachter
     public override void addAttack()
     {
         _attacks.Add(new Attack("Shoot Arrow", 20, 100, 10));
-        _attacks.Add(new Attack("Slash", 15, 5, 30));
-        _attacks.Add(new Attack("Stab", 20, 5, 25));
+        _attacks.Add(new Attack("Slash", 15, 5, 15));
+        _attacks.Add(new Attack("Stab", 20, 5, 20));
     }
 }

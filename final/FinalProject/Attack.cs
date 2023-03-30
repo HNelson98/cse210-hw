@@ -27,4 +27,9 @@ public class Attack
     {
         return _range;
     }
+
+    public int getUses()
+    {
+        return _uses;
+    }
 }

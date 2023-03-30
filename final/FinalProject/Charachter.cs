@@ -30,9 +30,9 @@ public abstract class Charachter
         Console.WriteLine("Attacks: ");
         foreach (Attack attack in _attacks)
         {
-            Console.WriteLine("Name: " + attack.getName());
-            Console.WriteLine("Power: " + attack.getPower());
-            Console.WriteLine("Range: " + attack.getRange());
+            Console.WriteLine("     Name: " + attack.getName());
+            Console.WriteLine("         Power: " + attack.getPower());
+            Console.WriteLine("         Range: " + attack.getRange());
         }
     }
     public string getName()
