@@ -12,13 +12,28 @@ public class Menu
     {
         while (_selection != "5")
         {
-            displayMenu();
+            runMenu();
         }
     }
 
-    public void displayMenu()
+    public void runMenu()
     {
-        Console.WriteLine("Welcome to the Combat Simulator!");
+        if (player1 != null)
+        {
+            Console.WriteLine($"Player 1: {player1.getName()}");
+        }
+        else
+        {
+            Console.WriteLine("Player 1: None");
+        }
+        if (player2 != null)
+        {
+            Console.WriteLine($"Player 2: {player2.getName()}");
+        }
+        else
+        {
+            Console.WriteLine("Player 2: None");
+        }
         Console.WriteLine("1. Start Combat");
         Console.WriteLine("2. Choose Players");
         Console.WriteLine("3. Create User");
@@ -31,9 +46,14 @@ public class Menu
             bool choosing = true;
             while (choosing)
             {
-                if (player1 == null || player2 == null)
+                if (player1 == null)
                 {
-                    Console.WriteLine("Please choose two players.");
+                    Console.WriteLine("Player 1, please choose a user.");
+                    choosePlayer();
+                }
+                else if (player2 == null)
+                {
+                    Console.WriteLine("Player 2, please choose a user.");
                     choosePlayer();
                 }
                 else if (char1 == null)
@@ -52,6 +72,16 @@ public class Menu
                 }
             }
             Console.WriteLine("Starting Combat");
+            Combat combat = new Combat();
+            while (!combat.haveWinner())
+            {
+                combat.displayCombat();
+                combat.playerTurn(char1, char2);
+                combat.checkWinner(char1, char2);
+                Console.Write("Press Enter to continue...");
+                Console.ReadLine();
+                Console.Clear();
+            }
             
             
         }
@@ -80,6 +110,7 @@ public class Menu
                 string json = File.ReadAllText(path);
                 User user = JsonSerializer.Deserialize<User>(json, new JsonSerializerOptions { WriteIndented = true });
                 user.AddCharacter();
+                user.save();
             }
             else
             {

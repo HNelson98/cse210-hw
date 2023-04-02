@@ -3,7 +3,7 @@ public class User
 {
     string _name { get; set; }
     int _id { get; set; }
-    public static int _nextId = 0;
+    public static int _nextId { get; set;}
     List<Charachter> _characters = new List<Charachter>();
 
     public User(string name)
@@ -11,16 +11,22 @@ public class User
         _name = name;
         _id = _nextId;
         _nextId++;
+        AddCharacter();
     }
 
    public User(){
 
    }
 
+    public string getName()
+    {
+        return _name;
+    }
     public void AddCharacter(){
        Console.WriteLine("What is the name of your character?");
        string name = Console.ReadLine();
-       Console.WriteLine("What is the class of your character? (1) Knight (2) Mage (3) Ranger");
+       Console.WriteLine("What is the class of your character?");
+       Console.WriteLine("1. Knight, 2. Mage, 3. Ranger");
        string classType = Console.ReadLine();
        if (classType == "1")
        {
@@ -36,11 +42,11 @@ public class User
        }
        else
        {
-           Console.WriteLine("Invalid class type.");
+           Console.WriteLine("Invalid selection.");
        }
-       save();
+
     }
-    public void dispayCharachters()
+    public void dispalyCharachters()
     {
         foreach (Charachter character in _characters)
         {
@@ -57,6 +63,7 @@ public class User
             {
                 Console.WriteLine("You have no characters. Please create one.");
                 AddCharacter();
+                save();
                 Console.Clear();
             }
             Console.WriteLine("Which character would you like to use?");
@@ -89,17 +96,20 @@ public class User
             Directory.CreateDirectory(folder);
         }
         string fileName = folder + "/" + _name + ".json";
-        var userinfo = new
+        dynamic userInfo = new Dictionary<string, dynamic>
         {
-            name = _name,
-            id = _id,
-            characters = _characters
+            {
+                "name", _name
+            },
+            {
+                "id", _id
+            },
+            {
+                "characters", _characters
+            }
         };
-        string json = JsonSerializer.Serialize(userinfo, new JsonSerializerOptions
-        {
-            WriteIndented = true
-        });
-        File.WriteAllText(fileName, json);
+        string jsonString = JsonSerializer.Serialize(userInfo);
+        File.WriteAllText(fileName, jsonString);
     }
 
 }

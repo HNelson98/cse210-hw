@@ -32,4 +32,8 @@ public class Attack
     {
         return _uses;
     }
+    public void use()
+    {
+        _uses--;
+    }
 }

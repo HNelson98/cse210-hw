@@ -20,6 +20,49 @@ public abstract class Charachter
     }
 
     public abstract void addAttack();
+    public void attack(int distance, Charachter target)
+    {
+        Console.WriteLine("Which attack would you like to use?");
+        int i = 0;
+        foreach (Attack attack in _attacks)
+        {
+            Console.WriteLine("     " + i + ": " + attack.getName());
+            i++;
+        }
+        int attackChoice = Convert.ToInt32(Console.ReadLine());
+        if (attackChoice < _attacks.Count)
+        {
+            if (_attacks[attackChoice].getUses() > 0)
+            {
+                if (distance <= _attacks[attackChoice].getRange())
+                {
+                    _attacks[attackChoice].use();
+                    int toHit = new Random().Next(1, 25);
+                    Console.WriteLine("You rolled a " + toHit + " to hit.");
+                    if (toHit > target.getArmorPoints())
+                    {
+                        int damage = _attacks[attackChoice].getPower();
+                        Console.WriteLine("You hit for " + damage + " damage.");
+                        target._health -= damage;
+                        Console.WriteLine(target.getName() + " has " + target.getHealth() + " health left.");
+                        Console.WriteLine(_attacks[attackChoice].getName() + " has " + _attacks[attackChoice].getUses() + " uses left.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("You missed.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("That attack is out of range.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("That attack is out of uses.");
+            }
+        }  
+    }
     public void info()
     {
         Console.WriteLine("Name: " + _name);
