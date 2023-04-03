@@ -82,6 +82,8 @@ public class Menu
                 Console.ReadLine();
                 Console.Clear();
             }
+            clearPlayers();
+
             
             
         }
@@ -200,5 +202,12 @@ public class Menu
         
     }
 
+    public void clearPlayers()
+    {
+        player1 = null;
+        player2 = null;
+        char1 = null;
+        char2 = null;
+    }
 
 }

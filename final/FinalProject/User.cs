@@ -1,9 +1,9 @@
 using System.Text.Json;
 public class User
 {
-    string _name { get; set; }
-    int _id { get; set; }
-    public static int _nextId { get; set;}
+    string _name;
+    int _id;
+    public static int _nextId;
     List<Charachter> _characters = new List<Charachter>();
 
     public User(string name)
@@ -95,6 +95,7 @@ public class User
         {
             Directory.CreateDirectory(folder);
         }
+        dynamic charachters = getCharachters();
         string fileName = folder + "/" + _name + ".json";
         dynamic userInfo = new Dictionary<string, dynamic>
         {
@@ -105,11 +106,22 @@ public class User
                 "id", _id
             },
             {
-                "characters", _characters
+                "characters", charachters
             }
         };
         string jsonString = JsonSerializer.Serialize(userInfo);
         File.WriteAllText(fileName, jsonString);
+    }
+
+    public dynamic getCharachters()
+    {
+        dynamic charichterDict = new Dictionary<string, dynamic>
+        {};
+        foreach (Charachter charachter in _characters)
+        {
+            charichterDict.Add(charachter.getName(), charachter);
+        }
+        return charichterDict;
     }
 
 }

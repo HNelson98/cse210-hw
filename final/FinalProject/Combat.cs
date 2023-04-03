@@ -90,9 +90,16 @@ public class Combat
                 if (direction == "Towards")
                 {
                     int feet = new Random().Next(1, 30);
-                    distance = distance - feet;
-                    Console.WriteLine($"You ran {feet} feet towards your opponent.");
-                    Console.WriteLine($"You are now {distance} feet away.");
+                    if (distance < 5 && feet > distance && distance - feet < 5) 
+                    {
+                        Console.WriteLine("You cannot run any closer!");
+                    }
+                    else
+                    {
+                        distance = distance - feet;
+                        Console.WriteLine($"You ran {feet} feet towards your opponent.");
+                        Console.WriteLine($"You are now {distance} feet away.");
+                    }
                 }
                 else if (direction == "Away")
                 {
